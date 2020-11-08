@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+function generateNewFolderName(fs) { //existingFolders
+  // Write your code here
+  let len = fs.length
+  if(len === 0) return 'New Folder'
+  let count = 2
+  let max = 0
+  let nums = []
+
+  for(let i=0; i<len; i++){
+    if(fs[i] === 'New Folder') nums[1] = true
+    else nums[fs[i].replace('New Folder (','').replace(')','')*1] = true
+  }
+  console.log(nums)
+  
+  for(let i=1; i<nums.length; i++){
+    if(!nums[i]) return `New Folder (${i})`
+  }
+  return `New Folder (${len})`
+
+
+  /* fs.sort() //정렬
+  let count = 2
+  let num
+  for(let i=0; i<len; i++){
+    if(i === 0) {
+      if(fs[i] !== 'New Folder') return 'New Folder' //1번 없으면 New Folder 출력
+    }else{
+      num = fs[i].replace('New Folder (','').replace(')','')*1
+      if(count !== num){
+        return `New Folder (${count})` //카운트랑 숫자가 다르면 출력
+      }else count++
+    }
+  } */
+  return `New Folder (${count})`
+}
+
+console.log(generateNewFolderName(["New Folder","New Folder (2)"]));
+    </script>
+  </body>
+</html>

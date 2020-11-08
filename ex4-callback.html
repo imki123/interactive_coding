@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <script>
+      function aa(callback, delay){
+        setTimeout(()=>{
+          let i=1
+          if(callback(i)){
+            aa(()=>callback(++i), delay)
+          } 
+        }, delay)
+      }
+      function callback(num){
+        console.log(num)
+        if(num > 4) return false
+        return true
+      }
+      aa(callback, 1000)
+    </script>
+  </body>
+</html>

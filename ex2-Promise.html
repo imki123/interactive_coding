@@ -1,0 +1,58 @@
+<html>
+  <body>
+    <script>
+function promise(a) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(a), 1000*a)
+  })
+}
+
+function promiseAll(arr) {
+  //프라미스 배열을 인자로 받아 입력 순서대로 결과 배열을 프라미스로 반환
+  return new Promise((resolve, reject)=>{
+    let result = []
+    let count = 0
+    let len = arr.length
+    for (let i = 0; i < len; i++) {
+      arr[i].then((res) => {
+        result[i] = res
+        console.log('res, idx: '+ res, i)
+        if (++count === len) {
+          resolve(result)  //함수결과를 담은 result배열 resolve
+        }
+      })
+    }
+  })
+}
+promiseAll([promise(3), promise(5), promise(1)]).then(res => console.log(res))
+
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        hello(otherName) {
+          console.log(
+            `Hello${otherName ? " " + othername : ""}. My name is ${
+              this.name
+            }. I am ${this.age} years old.`
+          )
+        }
+      }
+
+      const person = new Person("임기영", 30)
+
+      class Child extends Person {
+        cry(num) {
+          if (isNaN(num) || num <= 1) console.log("Waah~")
+          for (let i = 0; i < num; i++) {
+            setTimeout(() => console.log("Waah~"), 1000 * i)
+          }
+        }
+      }
+
+      const child = new Child("아기", 1)
+    </script>
+  </body>
+</html>

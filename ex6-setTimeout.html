@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <script>
+      let time1 = Date.now()
+      let count = 1
+      let time2 = Date.now()
+      let count2 = 1
+
+      //setInterval 반복
+      let interval = setInterval(function delay(){
+        for(let i=0; i<1000000000; i++); //대략 650ms
+        let now = Date.now()
+        console.log(count++, Date.now() -time1)
+        time1 = now
+        if(count > 10) clearTimeout(interval)
+      }, 1000)
+      
+      //setTimeout 중첩
+      /* let timerId = setTimeout(function delay2(){
+        for(let i=0; i<1000000000; i++); //대략 650ms
+        let now = Date.now()
+        console.log(count2++, now -time2)
+        time2 = now
+        timerId = setTimeout(delay2, 1000)
+        if(count2 > 10) clearTimeout(timerId)
+      },1000) */
+
+      
+    </script>
+  </body>
+</html>
