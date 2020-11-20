@@ -7,13 +7,13 @@
       let count2 = 1
 
       //setInterval 반복 
-      let interval = setInterval(function delay(){
+      /* let interval = setInterval(function delay(){
         for(let i=0; i<1000000000; i++); //대략 650ms
         let now = Date.now()
         console.log(count++, Date.now() -time1)
         time1 = now
         if(count > 10) clearTimeout(interval)
-      }, 1000)
+      }, 1000) */
       
       //setTimeout 중첩
       /* let timerId = setTimeout(function delay2(){
@@ -25,7 +25,27 @@
         if(count2 > 10) clearTimeout(timerId)
       },1000) */
 
+      /* setInterval은 시간을 보장하는가? */
+      let tick = 1
+      let time3 = Date.now()
+      let itv1sec = setInterval(()=>{
+        let now = Date.now()
+        console.log(tick++, Date.now() -time1)
+        time1 = now
+      },1000)
       
+      let timer = setTimeout(function delay(){
+        console.log('delay start')
+        console.time('delay')
+        for(let i=0; i<4000000000; i++); //대략 650ms
+        console.timeEnd('delay')
+        timer = setTimeout(delay, 2000)
+      }, 2000)
+      
+
+      function delay(){
+        
+      }
     </script>
   </body>
 </html>
