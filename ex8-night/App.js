@@ -19,7 +19,7 @@ class App {
     this.rains = []
     this.rainsNum = 15 //빗방울 개수
     for(let i=0; i<this.rainsNum; i++){
-      this.rains[i] = new Rain(Math.random()*document.body.clientWidth, 500*i, this.mouse)
+      this.rains[i] = new Rain(60, 500*i, this.mouse) //radius, delay, mouse
     }
 
 

@@ -1,9 +1,8 @@
 export default class Rain{
-  constructor(x, delay, mouse){
-    this.initX = x
-    this.x = x
-    this.y = 0
-    this.radius = 0
+  constructor(radius, delay, mouse){
+    this.x = Math.random()*document.body.clientWidth
+    this.y = -radius*2
+    this.radius = radius
 
     this.vxRange = 2 //빗방울 x속도
     this.vx = Math.random()*this.vxRange
@@ -23,16 +22,16 @@ export default class Rain{
 
     this.x += this.vx
     this.y += this.vy
-    if(this.y >= canvasHeight){ //바닥에 닿으면 처음 위치로
-      this.y = 0
-      this.x = this.initX
+    if(this.y >= canvasHeight + this.radius){ //바닥에 닿으면 위치, 색변경
+      this.y = -this.radius
+      this.x = Math.random()*document.body.clientWidth
       this.color = Math.floor(Math.random()*256)
     }
     //빗방울
     ctx.globalCompositeOperation = 'lighter'
     ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.8)`
     ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.8)`
-    ctx.shadowBlur = 40;
+    ctx.shadowBlur = this.radius*2/3;
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.fill()
@@ -55,9 +54,8 @@ export default class Rain{
 
   excuteDelay(){
     setTimeout(()=>{
-      this.radius = 60 //빗방울 크기
       this.vy = 3 //빗방울 y속도
-      this.setVx(500) //2초마다 방향 변경
+      this.setVx(500) //0.5초마다 방향 변경
     },this.delay)
   }
 }
