@@ -29,6 +29,14 @@ form{
 .ballNumSpan{
   color: white;
 }
+form button{
+  background: white;
+  border: 1px solid gray;
+  outline: 0;
+  border-radius: 10px;
+  padding: 2px 4px;
+}
+
 
 .navigate{
   position: absolute;
