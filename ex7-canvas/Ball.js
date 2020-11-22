@@ -73,14 +73,25 @@ export default class Ball {
       const min1 = Math.min(x1, x2)
       const min2 = Math.min(y1, y2)
       const min = Math.min(min1, min2)
+      const diameter = this.radius * 2
+      const newX = diameter + (Math.random() * document.body.clientWidth - diameter)
+      const newY = diameter + (Math.random() * document.body.clientHeight - diameter)
 
       if(min === min1){
         this.vx *= -1
         this.x += this.vx
+        if(this.x > minX && this.x < maxX && this.y > minY && this.y < maxY){
+          this.x = newX
+          this.y = newY
+        }
       }
       if(min === min2){
         this.vy *= -1
         this.y += this.vy
+        if(this.x > minX && this.x < maxX && this.y > minY && this.y < maxY){
+          this.x = newX
+          this.y = newY
+        }
       }
     }
   }

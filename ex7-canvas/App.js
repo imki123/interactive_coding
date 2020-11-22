@@ -11,7 +11,7 @@ class App {
     window.addEventListener("resize", this.resize.bind(this), false)
     this.resize()
 
-    this.block = new Block(700, 100, 300, window.innerHeight*0.5)
+    this.block = new Block(700, 100, 300, window.innerHeight*0.4)
 
     const $ballNumInput = document.querySelector('.ballNumInput')
     $ballNumInput.addEventListener('keyup', ()=>{
