@@ -30,8 +30,8 @@ export default class Rain{
     }
     //빗방울
     ctx.globalCompositeOperation = 'lighter'
-    ctx.fillStyle = `hsl(${this.color} 100% 70% / 0.7)`
-    ctx.shadowColor = `hsl(${this.color} 100% 70% / 0.7)`
+    ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.8)`
+    ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.8)`
     ctx.shadowBlur = 40;
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
@@ -48,7 +48,6 @@ export default class Rain{
   }
 
   setVx(time){
-    
     setInterval(() => {
       this.vx = (Math.random() * this.vxRange) -this.vxRange/2 -this.gravity*this.vxRange
     }, time)
@@ -56,7 +55,7 @@ export default class Rain{
 
   excuteDelay(){
     setTimeout(()=>{
-      this.radius = 40 //빗방울 크기
+      this.radius = 60 //빗방울 크기
       this.vy = 3 //빗방울 y속도
       this.setVx(500) //2초마다 방향 변경
     },this.delay)
