@@ -21,7 +21,8 @@ export default class Mouse{
 
   draw(ctx){
     //우산 윗부분
-    ctx.fillStyle = 'white'
+    ctx.globalCompositeOperation = 'lighter'
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, Math.PI, 2*Math.PI)
     ctx.fill()
@@ -40,6 +41,7 @@ export default class Mouse{
     ctx.beginPath()
     ctx.arc(this.x-this.radius/5, this.y +this.radius, this.radius/5, 0, Math.PI)
     ctx.stroke()
+    
 
 
   }

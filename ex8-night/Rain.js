@@ -32,6 +32,7 @@ export default class Rain{
     ctx.fillStyle = `hsl(${this.color} 100% 70% / 0.7)`
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+    ctx.globalCompositeOperation = 'lighter'
     ctx.fill()
 
     //빗방울 줄기
@@ -53,7 +54,7 @@ export default class Rain{
 
   excuteDelay(){
     setTimeout(()=>{
-      this.radius = 30 //빗방울 크기
+      this.radius = 40 //빗방울 크기
       this.vy = 3 //빗방울 y속도
       this.setVx(500) //2초마다 방향 변경
     },this.delay)
