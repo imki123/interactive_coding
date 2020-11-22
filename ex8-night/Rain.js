@@ -29,10 +29,12 @@ export default class Rain{
       this.color = Math.floor(Math.random()*256)
     }
     //빗방울
+    ctx.globalCompositeOperation = 'lighter'
     ctx.fillStyle = `hsl(${this.color} 100% 70% / 0.7)`
+    ctx.shadowColor = `hsl(${this.color} 100% 70% / 0.7)`
+    ctx.shadowBlur = 40;
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
-    ctx.globalCompositeOperation = 'lighter'
     ctx.fill()
 
     //빗방울 줄기
