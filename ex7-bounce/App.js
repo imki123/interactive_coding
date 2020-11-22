@@ -59,7 +59,7 @@ class App {
       this.balls = []
       if($ballNum) $ballNum.innerHTML = num
       for(let i=0; i<this.ballNum; i++){
-        this.balls[i] = new Ball(this.stageWidth, this.stageHeight, Math.random()*60 +10, Math.random()*12 +1, this.block)
+        this.balls[i] = new Ball(this.stageWidth, this.stageHeight, Math.random()*60 +10, Math.random()*10 +1, this.block)
       }
       console.log(this.balls)
     }
