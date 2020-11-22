@@ -54,7 +54,7 @@ export default class Rain{
   excuteDelay(){
     setTimeout(()=>{
       this.radius = 30 //빗방울 크기
-      this.vy = 7 //빗방울 y속도
+      this.vy = 5 //빗방울 y속도
       this.setVx(500) //2초마다 방향 변경
     },this.delay)
   }
