@@ -3,7 +3,7 @@ export default class Ball {
     this.radius = radius
     this.vx = speed
     this.vy = speed
-    this.vc = 1
+    this.vc = 0.3
 
     const diameter = this.radius * 2
     this.x = diameter + (Math.random() * stageWidth - diameter)
