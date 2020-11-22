@@ -35,7 +35,6 @@ export default class Ball {
 
     ctx.globalCompositeOperation = 'lighter'
     ctx.fillStyle = this.fillStyle
-    ctx.shadowColor = this.fillStyle
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.fill()
