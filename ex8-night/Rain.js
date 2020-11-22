@@ -50,7 +50,7 @@ export default class Rain{
   setVx(time){
     
     setInterval(() => {
-      this.vx = (Math.random() * this.vxRange) -this.vxRange/2 -this.gravity*this.vxRange*2
+      this.vx = (Math.random() * this.vxRange) -this.vxRange/2 -this.gravity*this.vxRange
     }, time)
   }
 
