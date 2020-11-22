@@ -11,7 +11,7 @@ class App {
     window.addEventListener("resize", this.resize.bind(this), false)
     this.resize()
 
-    this.block = new Block(700, 100, 300, window.innerHeight*0.4)
+    this.block = new Block(document.body.clientWidth*0.6, document.body.clientHeight*0.1, 200, document.body.clientHeight*0.4)
 
     const $ballNumInput = document.querySelector('.ballNumInput')
     $ballNumInput.addEventListener('keyup', ()=>{
@@ -31,7 +31,7 @@ class App {
     this.canvas.height = this.stageHeight * 2
     this.ctx.scale(2, 2)
 
-    this.block = new Block(700, 100, 300, window.innerHeight*0.4)
+    this.block = new Block(document.body.clientWidth*0.6, document.body.clientHeight*0.1, 200, document.body.clientHeight*0.4)
   }
 
   animate(t) {
