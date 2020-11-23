@@ -3,18 +3,21 @@ export default class Ripple {
     this.mouse = mouse
     this.x = mouse.x
     this.y = mouse.y
-    this.power = this.mouse.power / 10
+    this.power = this.mouse.power
     this.radius = 1
 
-    this.color = app.color += 5
+    this.color = app.color += 10
     this.shape = app.shape
+    this.max = app.max
+    this.min = app.min
   }
 
   draw(ctx) {
     const pi = Math.PI
-    const r = this.radius
+    let r = this.radius
     let x = this.x
     let y = this.y
+    let maxRadius = this.max
     //ctx.globalCompositeOperation = 'saturation'
     //ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.7)`
     //ctx.shadowBlur = 40;
@@ -24,12 +27,14 @@ export default class Ripple {
       ctx.beginPath()
       ctx.arc(x, y, r, 0, 2 * pi)
       ctx.fill()
+      maxRadius = this.max*1.5
     } else if (this.shape === 'triangle') {
       ctx.beginPath()
       ctx.moveTo(x, y - r)
       ctx.lineTo(x - r * Math.cos(pi / 6), y + r * Math.sin(pi / 6))
       ctx.lineTo(x + r * Math.cos(pi / 6), y + r * Math.sin(pi / 6))
       ctx.fill()
+      maxRadius = this.max*2
     } else if (this.shape === 'square') {
       ctx.beginPath()
       ctx.moveTo(x - r, y - r)
@@ -37,6 +42,7 @@ export default class Ripple {
       ctx.lineTo(x + r, y + r)
       ctx.lineTo(x + r, y - r)
       ctx.fill()
+      maxRadius = this.max
     } else if (this.shape === 'star') {
       ctx.beginPath()
       //중앙 위쪽점부터 반시계방향으로
@@ -61,7 +67,9 @@ export default class Ripple {
       //10
       ctx.lineTo(x + (r / 3) * Math.cos((pi * 3) / 10), y - (r / 3) * Math.sin((pi * 3) / 10))
       ctx.fill()
+      maxRadius = this.max*5
     } else if (this.shape === 'heart') {
+      r *= 2
       y = y - r/2
       const topCurveHeight = r * 0.3
       ctx.beginPath()
@@ -75,8 +83,9 @@ export default class Ripple {
       // top right curve
       ctx.bezierCurveTo(x + r / 2, y, x, y, x, y + topCurveHeight)
       ctx.fill()
+      maxRadius = this.max*5
     }
-
-    this.radius += this.power
+    if(this.radius <= maxRadius) this.radius += this.power
+    
   }
 }

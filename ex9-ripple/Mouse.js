@@ -43,37 +43,40 @@ export default class Mouse {
   }
 
   handleDown() {
-    //클릭 시작하면 물결, 파워 증가
+    //터치 시작하면 인터벌 생성
     clearInterval(this.interval)
-    this.interval = setInterval(() => {
-      this.power += 0.5
-      this.radius = this.power
-    })
+    this.interval = Date.now()
   }
   handleUp() {
-    //클릭 때면 물결 생성
-    if (this.power <= 0.5) {
-      //터치의 경우 한번 더 실행되는 에러 처리
-      clearInterval(this.interval)
+    //터치 때면 물결 생성
+    this.power = (Date.now() - this.interval)/100
+    if (this.power <= 0.01 || this.interval === Infinity) {
+      //터치 간격이 매우 작거나, 한번 더 실행되는 에러 처리
       this.power = 0
+      this.interval = Infinity
       this.radius = this.initRadius
       return
     }
 
     //물결 생성
-    console.log(this.power)
+    //console.log(this.power)
     this.app.ripples.push(new Ripple(this, this.app)) 
-    if (this.app.ripples.length > 100) {
-      //100개 까지 물결 저장
+    if (this.app.ripples.length > 70) {
+      //70개 까지 물결 저장
       this.app.ripples.shift()
     }
-    clearInterval(this.interval)
     this.power = 0
+    this.interval = Infinity
     this.radius = this.initRadius
   }
 
   draw(ctx) {
     //터치 동그라미
+    if(this.interval === Infinity){
+      this.radius = this.initRadius
+    }else{
+      this.radius = (Date.now() - this.interval)/10
+    }
     ctx.strokeStyle = `rgba(255,255,255,0.9)`
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
