@@ -27,9 +27,9 @@ class App {
     $initButton.onmousedown = e => e.stopPropagation()
     $initButton.onmouseup = e => e.stopPropagation()
     $initButton.onmousemove = e => e.stopPropagation()
-    $initButton.ontouchstart = e => e.stopPropagation()
+    //$initButton.ontouchstart = e => e.stopPropagation()
+    //$initButton.ontouchmove = e => e.stopPropagation()
     $initButton.ontouchend = e => e.stopPropagation()
-    $initButton.ontouchmove = e => e.stopPropagation()
     $initButton.onclick = (e)=>{
       e.preventDefault()
       e.stopPropagation()
