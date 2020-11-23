@@ -9,7 +9,7 @@ export default class Rain{
     this.vy = 0
     this.delay = delay
     this.excuteDelay() //일정 시간 후에 비가 떨어지도록 하기
-    this.color = Math.floor(Math.random()*256)
+    this.color = Math.floor(Math.random()*360)
 
     this.mouse = mouse
   }
