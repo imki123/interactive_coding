@@ -14,13 +14,13 @@ class App {
     this.resize()
 
     //마우스 인스턴스 생성
-    this.mouse = new Mouse(60)
+    this.mouse = new Mouse(60, this.canvas.width, this.canvas.height)
 
     //빗방울 인스턴스 생성
     this.rains = []
-    this.rainsNum = 15 //빗방울 개수
+    this.rainsNum = 20 //빗방울 개수
     for(let i=0; i<this.rainsNum; i++){
-      this.rains[i] = new Rain(60, 500*i, this.stageWidth, this.stageHeight, this.mouse) //radius, delay, mouse
+      this.rains[i] = new Rain(60, 500*i, this.canvas.width, this.canvas.height, this.mouse) //radius, delay, mouse
     }
 
 

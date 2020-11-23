@@ -1,8 +1,8 @@
 export default class Mouse{
-  constructor(radius){
+  constructor(radius, canvasWidth, canvasheight){
     this.radius = radius
-    this.x = document.body.clientWidth/2
-    this.y = document.body.clientHeight -this.radius -this.radius/5
+    this.x = canvasWidth/2
+    this.y = canvasheight -this.radius -this.radius/5
 
     document.body.addEventListener('mousemove', (e)=>this.handleMove(e))
     document.body.addEventListener('touchstart', (e)=>this.handleTouch(e))

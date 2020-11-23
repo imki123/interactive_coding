@@ -1,6 +1,6 @@
 export default class Rain{
-  constructor(radius, delay, stageWidth, stageHeight, mouse){
-    this.x = Math.random()*stageWidth
+  constructor(radius, delay, canvasWidth, canvasHeight, mouse){
+    this.x = Math.random()*canvasWidth
     this.y = -radius*2
     this.radius = radius
 
@@ -14,17 +14,17 @@ export default class Rain{
     this.mouse = mouse
   }
 
-  draw(ctx, stageWidth, stageHeight){
-    this.stageWidth = stageWidth
-    this.stageHeight = stageHeight
+  draw(ctx, canvasWidth, canvasHeight){
+    this.canvasWidth = canvasWidth
+    this.canvasHeight = canvasHeight
 
-    this.gravity = ((this.stageWidth/2) - this.mouse.x) / (this.stageWidth/2)
+    this.gravity = ((this.canvasWidth/2) - this.mouse.x) / (this.canvasWidth/2)
 
     this.x += this.vx
     this.y += this.vy
-    if(this.y >= stageHeight + this.radius){ //바닥에 닿으면 위치, 색변경
+    if(this.y >= canvasHeight + this.radius){ //바닥에 닿으면 위치, 색변경
       this.y = -this.radius
-      this.x = Math.random()*stageWidth
+      this.x = Math.random()*canvasWidth
       this.color = Math.floor(Math.random()*256)
     }
     //빗방울
