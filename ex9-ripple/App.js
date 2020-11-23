@@ -15,6 +15,7 @@ class App {
 
     this.ripples = []
     this.color = rand(0, 360)
+    this.shape = 'circle'
 
     //마우스 인스턴스 생성
     this.mouse = new Mouse(5, this)
@@ -49,9 +50,24 @@ class App {
 } // App end
 
 window.onload = () => {
-  new App()
-}
+  const app = new App()
 
+  //img 클릭시 이벤트 무시하기
+  const $imgs = document.querySelectorAll('img')
+  for(let i of $imgs){
+    i.onmousedown = e => e.stopPropagation()
+    i.onmouseup = e => e.stopPropagation()
+    i.onmousemove = e => e.stopPropagation()
+    i.ontouchstart = e => e.stopPropagation()
+    i.ontouchend = e => e.stopPropagation()
+    i.ontouchmove = e => e.stopPropagation()
+    i.onclick = e => {
+      e.stopPropagation()
+      app.shape = i.alt
+      console.log(app.shape)
+    }
+  }
+}
 
 export function rand(min, max){
   return Math.floor(Math.random()*(max -min +1)) +min

@@ -52,7 +52,7 @@ export default class Mouse {
   }
   handleUp() {
     //클릭 때면 물결 생성
-    if (this.power <= 1) {
+    if (this.power <= 0.5) {
       //터치의 경우 한번 더 실행되는 에러 처리
       clearInterval(this.interval)
       this.power = 0
