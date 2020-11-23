@@ -80,15 +80,17 @@ a:link, a:visited, a:hover{
 }
 .shapesBack {
   margin: auto;
-  width: 50%;
+  width: 60%;
   border-radius: 20px;
   background: rgb(255, 255, 255, 0.7);
 }
 .shapes img {
   width: 13%;
+  padding: 2%;
   margin: 2%;
 }
 .shapes img:hover {
   cursor: pointer;
-  opacity: 0.7;
+  background: gray;
+  border-radius: 10px;
 }
