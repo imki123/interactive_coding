@@ -1,5 +1,6 @@
 import Block from './Block.js'
 import Ball from './Ball.js'
+import Mouse from './Mouse.js'
 
 class App {
   constructor() {
@@ -8,14 +9,35 @@ class App {
     this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1
     document.body.appendChild(this.canvas)
     
-
     window.addEventListener("resize", this.resize.bind(this), false)
     this.resize()
 
-    this.block = new Block(document.body.clientWidth*0.6, document.body.clientHeight*0.1, 200, document.body.clientHeight*0.4)
 
-    this.setBallNum(Math.random()*30+1)
-        
+    this.block = new Block(document.body.clientWidth*0.6, document.body.clientHeight*0.1, 200, document.body.clientHeight*0.4)
+    this.mouse = new Mouse(this)
+
+    //this.setBallNum(Math.random()*30+1)
+    let ballSize = rand(10,70)
+    this.ballNum = 1
+    this.balls = []
+    this.balls.push(new Ball(this.stageWidth, this.stageHeight, ballSize, 140/ballSize, this.block))
+
+    //init 버튼 클릭 이벤트 걸어주기
+    const $initButton = document.querySelector('#initButton')
+    $initButton.onmousedown = e => e.stopPropagation()
+    $initButton.onmouseup = e => e.stopPropagation()
+    $initButton.onmousemove = e => e.stopPropagation()
+    $initButton.ontouchstart = e => e.stopPropagation()
+    $initButton.ontouchend = e => e.stopPropagation()
+    $initButton.ontouchmove = e => e.stopPropagation()
+    $initButton.onclick = (e)=>{
+      e.preventDefault()
+      e.stopPropagation()
+      this.balls = [new Ball(this.stageWidth, this.stageHeight, ballSize, 140/ballSize, this.block)]
+      this.ballNum = 1
+      document.querySelector('.ballNum').innerHTML = '1'
+      document.querySelector('.info').style.display = 'block'
+    }
 
     window.requestAnimationFrame(this.animate.bind(this))
   }
@@ -41,29 +63,12 @@ class App {
       i.draw(this.ctx, this.stageWidth, this.stageHeight, this.block)
     })
   }
-
-  setBallNum(num){
-    num = parseInt(num)
-    if(num === undefined || isNaN(num) || num === '' || num <= 1){
-      num = 1
-    }else if(num > 30){
-      num = 30
-    }
-
-    const $ballNum = document.querySelector('.ballNum')
-    if(this.ballNum !== num){
-      this.ballNum = num
-      this.balls = []
-      if($ballNum) $ballNum.innerHTML = num
-      for(let i=0; i<this.ballNum; i++){
-        let ballSize = Math.random()*60 +10
-        this.balls[i] = new Ball(this.stageWidth, this.stageHeight, ballSize, 140/ballSize, this.block)
-      }
-      console.log(this.balls)
-    }
-  }
 } // App end
 
 window.onload = () => {
   new App()
+}
+
+export function rand(min, max){
+  return Math.floor(Math.random()*(max -min +1)) +min
 }

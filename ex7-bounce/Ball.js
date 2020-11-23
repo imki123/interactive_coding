@@ -1,13 +1,16 @@
 export default class Ball {
-  constructor(stageWidth, stageHeight, radius, speed, block) {
+  constructor(stageWidth, stageHeight, radius, speed, block, x, y) {
     this.radius = radius
-    this.vx = speed
-    this.vy = speed
-    this.vc = 0.3
+    let sign = Math.random() < 0.5 ? -1 : 1
+    this.vx = speed * (Math.random() < 0.5 ? -1 : 1)
+    this.vy = speed * (Math.random() < 0.5 ? -1 : 1)
+    this.vc = 0.5 //색상변경
 
     const diameter = this.radius * 2
-    this.x = diameter + (Math.random() * stageWidth - diameter)
-    this.y = diameter + (Math.random() * stageHeight - diameter)
+    x = x != undefined ? x : Math.random() * stageWidth
+    y = y != undefined ? y : Math.random() * stageHeight
+    this.x = diameter + (x - diameter)
+    this.y = diameter + (y - diameter)
 
     //블락 안에 공이 갇히지 않도록 초기화
     const minX = block.x - this.radius
