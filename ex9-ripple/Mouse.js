@@ -5,10 +5,8 @@ export default class Mouse {
   constructor(radius, app) {
     this.initRadius = radius
     this.radius = radius
-    this.x = document.body.clientWidth / 2
-    this.y = document.body.clientHeight / 2
     this.power = 0
-    this.interval = 0
+    this.interval = Infinity
 
     this.app = app
     this.color = app.color

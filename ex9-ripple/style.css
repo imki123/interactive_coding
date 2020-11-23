@@ -40,8 +40,8 @@ canvas{
 }
 
 .info{
-  position: absolute;
-  top: 45%;
+  position: fixed;
+  bottom: 50%;
   text-align: center;
   width: 100%;
   color: white;
