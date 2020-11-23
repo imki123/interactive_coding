@@ -37,3 +37,13 @@ canvas{
   border-radius: 10px;
   color: blue;
 }
+
+.info{
+  position: fixed;
+  bottom: 0;
+  left: 50px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+}

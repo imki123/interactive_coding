@@ -10,11 +10,14 @@ export default class Mouse{
   }
 
   handleMove(e){ 
-    //우산 위치조정
+    //우산 위치조정, MOVE 안보이게 하기
+    document.querySelector('.info').style.display = 'none'
     this.x = e.clientX +this.radius/5 
     this.y = e.clientY -this.radius -this.radius/5
   }
   handleTouch(e){
+    //우산 위치조정, MOVE 안보이게 하기
+    document.querySelector('.info').style.display = 'none'
     this.x = e.changedTouches[0].clientX +this.radius/5 
     this.y = e.changedTouches[0].clientY -this.radius -this.radius/5
   }
