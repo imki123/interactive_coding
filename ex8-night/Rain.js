@@ -31,7 +31,7 @@ export default class Rain{
     ctx.globalCompositeOperation = 'lighter'
     ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.8)`
     ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.8)`
-    ctx.shadowBlur = this.radius*2/3;
+    ctx.shadowBlur = this.radius*1/2;
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.fill()
