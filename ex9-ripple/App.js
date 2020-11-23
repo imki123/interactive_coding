@@ -13,8 +13,11 @@ class App {
     window.addEventListener('resize', this.resize.bind(this), false)
     this.resize()
 
+    this.ripples = []
+    this.color = rand(0, 360)
+
     //마우스 인스턴스 생성
-    this.mouse = new Mouse(10)
+    this.mouse = new Mouse(5, this)
 
     window.requestAnimationFrame(this.animate.bind(this))
   }
@@ -27,6 +30,8 @@ class App {
     this.canvas.width = this.stageWidth * this.pixelRatio
     this.canvas.height = this.stageHeight * this.pixelRatio
     this.ctx.scale(this.pixelRatio, this.pixelRatio)
+
+    this.max = Math.max(document.body.clientWidth, document.body.clientHeight)
   }
 
   animate(t) { //애니메이션
@@ -35,11 +40,11 @@ class App {
     //프레임 바뀔 때마다 화면 초기화
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     
+    //물결 그리기
+    this.ripples.forEach((i,idx)=>i.draw(this.ctx))
+
     //마우스 그리기
     this.mouse.draw(this.ctx) 
-
-    //빗방울 그리기
-
   }
 } // App end
 
