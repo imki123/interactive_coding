@@ -14,10 +14,6 @@ class App {
 
     this.block = new Block(document.body.clientWidth*0.6, document.body.clientHeight*0.1, 200, document.body.clientHeight*0.4)
 
-    const $ballNumInput = document.querySelector('.ballNumInput')
-    $ballNumInput.addEventListener('keyup', ()=>{
-      this.setBallNum($ballNumInput.value)  
-    })
     this.setBallNum(Math.random()*30+1)
         
 
