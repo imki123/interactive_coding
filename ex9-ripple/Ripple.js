@@ -18,7 +18,7 @@ export default class Ripple {
     //ctx.globalCompositeOperation = 'saturation'
     //ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.7)`
     //ctx.shadowBlur = 40;
-    ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.7)`
+    ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.5)`
 
     if (this.shape === 'circle') {
       ctx.beginPath()
