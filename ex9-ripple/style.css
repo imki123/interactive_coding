@@ -1,45 +1,55 @@
-*{
+* {
   box-sizing: border-box;
   user-select: none;
   -ms-user-select: none;
   outline: 0;
   margin: 0;
   padding: 0;
-  -webkit-tab-highlight-color: rgba(0,0,0,0);
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
 }
 
-html, body{
+html,
+body {
   width: 100%;
   height: 100%;
 }
-body{
+body {
   overflow: hidden;
   background-color: #161e38;
 }
-canvas{
+canvas {
   width: 100%;
   height: 100%;
 }
+.title {
+  position: fixed;
+  top: 0;
+  left: 10px;
+  text-align: left;
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+}
 
-.navigate{
+.navigate {
   position: absolute;
   top: 45%;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.navigate span{
+.navigate span {
   padding: 10px;
   cursor: pointer;
   color: white;
 }
-.navigate span:hover{
-  background: rgba(255,255,255,0.7);
+.navigate span:hover {
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   color: blue;
 }
 
-.info{
+.info {
   position: fixed;
   bottom: 50%;
   text-align: center;
@@ -48,23 +58,23 @@ canvas{
   font-size: 2rem;
 }
 
-.shapes{
+.shapes {
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
 }
-.shapesBack{
+.shapesBack {
   margin: auto;
   width: 50%;
   border-radius: 20px;
-  background: rgb(255,255,255,0.7);
+  background: rgb(255, 255, 255, 0.7);
 }
-.shapes img{
+.shapes img {
   width: 13%;
   margin: 2%;
 }
-.shapes img:hover{
+.shapes img:hover {
   cursor: pointer;
   opacity: 0.7;
 }
