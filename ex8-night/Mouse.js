@@ -40,6 +40,7 @@ export default class Mouse{
     ctx.strokeStyle = 'white'
     ctx.beginPath()
     ctx.arc(this.x-this.radius/5, this.y +this.radius, this.radius/5, 0, Math.PI)
+    ctx.lineWidth = 2;
     ctx.stroke()
     
 
