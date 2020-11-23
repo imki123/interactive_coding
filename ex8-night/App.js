@@ -4,8 +4,9 @@ import Rain from './Rain.js'
 class App {
   constructor() {
     //캔버스 생성
-    this.canvas = document.createElement('canvas')
-    this.ctx = this.canvas.getContext('2d')
+    this.canvas = document.createElement("canvas")
+    this.ctx = this.canvas.getContext("2d")
+    this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1
     document.body.appendChild(this.canvas)
 
     //리사이즈 이벤트 등록
@@ -27,8 +28,13 @@ class App {
   }
 
   resize() {
-    this.canvas.width = document.body.clientWidth
-    this.canvas.height = document.body.clientHeight
+    this.stageWidth = document.body.clientWidth
+    this.stageHeight = document.body.clientHeight
+
+    //픽셀을 더 또렷하게
+    this.canvas.width = this.stageWidth * this.pixelRatio
+    this.canvas.height = this.stageHeight * this.pixelRatio
+    this.ctx.scale(this.pixelRatio, this.pixelRatio)
   }
 
   animate(t) { //애니메이션
