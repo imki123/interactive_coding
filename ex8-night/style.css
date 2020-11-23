@@ -20,6 +20,17 @@ canvas{
   height: 100%;
 }
 
+.title {
+  position: fixed;
+  top: 0;
+  left: 10px;
+  text-align: left;
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 0 0 5px black;
+}
+
 .navigate{
   position: absolute;
   top: 45%;
