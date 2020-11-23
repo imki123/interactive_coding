@@ -48,9 +48,9 @@ export default class Mouse {
     this.interval = Date.now()
   }
   handleUp() {
-    //터치 때면 물결 생성
-    this.power = (Date.now() - this.interval)/100
-    if (this.power <= 0.01 || this.interval === Infinity) {
+    //터치 때면 물결, 파워 생성
+    this.power = (Date.now() - this.interval)/20
+    if (this.power <= 1/20 || this.interval === Infinity) {
       //터치 간격이 매우 작거나, 한번 더 실행되는 에러 처리
       this.power = 0
       this.interval = Infinity
@@ -71,12 +71,13 @@ export default class Mouse {
   }
 
   draw(ctx) {
-    //터치 동그라미
-    if(this.interval === Infinity){
+    //터치 시 파워 크기 보여주는 동그라미
+    if(this.interval === Infinity){ //터치 에러 처리
       this.radius = this.initRadius
-    }else{
-      this.radius = (Date.now() - this.interval)/10
+    }else{ //파워 동그라미 키우기
+      this.radius = (Date.now() - this.interval)/5
     }
+
     ctx.strokeStyle = `rgba(255,255,255,0.9)`
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
