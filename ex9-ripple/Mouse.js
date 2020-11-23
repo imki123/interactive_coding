@@ -43,7 +43,8 @@ export default class Mouse {
   }
 
   handleDown() {
-    //터치 시작하면 인터벌 생성
+    //터치 시작하면 인터벌 생성, CLICK 안보이게 하기
+    document.querySelector('.info').style.display = 'none'
     clearInterval(this.interval)
     this.interval = Date.now()
   }

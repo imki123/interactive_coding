@@ -39,6 +39,15 @@ canvas{
   color: blue;
 }
 
+.info{
+  position: absolute;
+  top: 45%;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 2rem;
+}
+
 .shapes{
   position: fixed;
   bottom: 0;
