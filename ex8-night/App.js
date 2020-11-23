@@ -18,7 +18,7 @@ class App {
 
     //빗방울 인스턴스 생성
     this.rains = []
-    this.rainsNum = 20 //빗방울 개수
+    this.rainsNum = 16 //빗방울 개수
     for(let i=0; i<this.rainsNum; i++){
       this.rains[i] = new Rain(60, 500*i, this.mouse) //radius, delay, mouse
     }
