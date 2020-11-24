@@ -98,14 +98,18 @@ export default class Landmark {
     dy *= yRatio
     
 
+    ctx.save()
     ctx.drawImage(this.images[idx], lx, ly, u * 5 * xRatio, u * 5 * yRatio)
     ctx.fillStyle = `hsl(${this.colors[idx]} 50% ${this.app.time.light}%)`
+    ctx.shadowColor = `hsl(${this.colors[idx]} 50% ${this.app.time.light}%)`
+    ctx.shadowBlur = this.app.time.light
     ctx.beginPath()
     ctx.moveTo(sx, sy) //그림자 시작. 왼쪽위
     ctx.lineTo(sx + dx, sy + dy) //그림자 왼쪽아래 (+dx, +dy)
     ctx.bezierCurveTo(sx + dx * 2, sy + dy * 2, sx + dx * 2 + u * 5 * xRatio, sy + dy * 2, sx + u * 5 * xRatio, sy) //그림자 오른쪽아래
     ctx.lineTo(sx + u * 5 * xRatio, sy) //오른쪽위 (+dx, +dy)
     ctx.fill()
+    ctx.restore()
   }
 
   loadImage(src){
