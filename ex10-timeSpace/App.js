@@ -1,3 +1,4 @@
+import Landmark from './Landmark.js'
 import Mouse from './Mouse.js'
 import Space from './Space.js'
 import Time from './Time.js'
@@ -43,6 +44,7 @@ class App {
     for(let i=0; i<=this.spaceNum; i++){
       this.spaces.push(new Space(i, this.mouse, this))
     }
+
   }
 
   animate(t) { //애니메이션

@@ -1,3 +1,5 @@
+import Landmark from "./Landmark.js"
+
 export default class Space {
   constructor(idx, mouse, app) {
     //load image
@@ -12,6 +14,9 @@ export default class Space {
     this.stageHeight = app.stageHeight
     this.x = this.idx * this.stageHeight
     this.y = this.stageHeight / 3
+
+    //landmark 인스턴스 생성
+    this.landmark = new Landmark(app, this) //app, space
   }
 
   draw(ctx) {
@@ -40,37 +45,12 @@ export default class Space {
       this.x = this.app.spaces[rightIdx].x - h //오른쪽 지도위치 -h
     }
 
-    //랜드마크 그리기
-    let lx = x +unit*2 //랜드마크 기준점 x좌표
-    let ly = y +unit*2 //랜드마크 기준점 y좌표
-    ctx.save()
-    ctx.fillStyle= `hsl(${50} 100% 50%)`
-    ctx.beginPath()
-    ctx.moveTo(lx, ly) //위. 기준점
-    ctx.lineTo(lx, ly + unit) //아래
-    ctx.lineTo(lx + unit/2, ly + unit) //아래
-    ctx.lineTo(lx + unit/2, ly) //위
-    ctx.fill()
-    ctx.restore()
-
-    let light = this.app.time.light /500
-    let dx = (this.app.time.x - lx)*light //태양과 랜드마크의 거리
-    let dy = (this.app.time.y - ly)*light
-    
-
-    ctx.save()
-    ctx.fillStyle= `hsl(${50} 100% 0%)`
-    ctx.beginPath()
-    ctx.moveTo(lx -dx, ly + unit -dy) //위
-    ctx.lineTo(lx, ly + unit) //아래
-    ctx.lineTo(lx + unit/2, ly + unit) //아래
-    ctx.lineTo(lx + unit/2 -dx, ly + unit- dy) //위
-    ctx.fill()
-    ctx.restore()
+    //Landmark 그리기
+    this.landmark.draw(ctx)
   }
 
   setSpeed() {
     this.speed = this.mouse.x/this.mouse.app.stageWidth
-    this.speed *= 5
+    this.speed *= 6
   }
 }

@@ -5,8 +5,9 @@ export default class Mouse {
     this.radius = radius
     this.app = app
     this.x = app.stageWidth/2
-    //this.y = document.body.clientHeight - 50
     this.y = app.stageHeight/2
+    //this.x = 0
+    //this.y = app.stageHeight
 
     document.body.addEventListener('mousedown', (e) => {
       this.handleMouse(e)
