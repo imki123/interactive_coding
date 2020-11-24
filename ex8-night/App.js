@@ -23,6 +23,27 @@ class App {
       this.rains[i] = new Rain(60, 500*i, this.mouse) //radius, delay, mouse
     }
 
+    const $buttons = document.querySelectorAll('.buttons button')
+    $buttons[0].onclick = (e)=>{
+      e.preventDefault()
+      e.stopPropagation()
+      this.rains.forEach(i => {
+        i.radius += 4
+        if(i.radius >= 500){
+          i.radius = 500
+        }
+      })
+    }
+    $buttons[1].onclick = (e)=>{
+      e.preventDefault()
+      e.stopPropagation()
+      this.rains.forEach(i => {
+        i.radius -= 4
+        if(i.radius <= 1){
+          i.radius = 1
+        }
+      })
+    }
 
     window.requestAnimationFrame(this.animate.bind(this))
   }

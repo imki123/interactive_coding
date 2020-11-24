@@ -7,3 +7,20 @@
   color: white;
   font-size: 1.5rem;
 }
+
+.buttons{
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  text-align: center;
+}
+
+.buttons button{
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background: rgba(255,255,255,0.8);
+  border: 0
+}

@@ -25,13 +25,13 @@ export default class Rain{
     if(this.y >= this.stageHeight + this.radius){ //바닥에 닿으면 위치, 색변경
       this.y = -this.radius
       this.x = Math.random()*this.stageWidth
-      this.color = Math.floor(Math.random()*256)
+      this.color = Math.floor(Math.random()*360)
     }
     //빗방울
     ctx.globalCompositeOperation = 'lighter'
     ctx.fillStyle = `hsl(${this.color} 100% 60% / 0.8)`
     ctx.shadowColor = `hsl(${this.color} 100% 60% / 0.8)`
-    ctx.shadowBlur = this.radius*1/2;
+    ctx.shadowBlur = 40;
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.fill()
