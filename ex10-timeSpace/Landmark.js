@@ -38,8 +38,8 @@ export default class Landmark {
     this.drawLandmark(1, lx, ly, u, ctx, 0.5)
 
     lx = x + u * 70
-    ly = y + u * 18
-    this.drawLandmark(5, lx, ly, u, ctx, 2)
+    ly = y + u * 16
+    this.drawLandmark(5, lx, ly, u, ctx, 1)
 
     lx = x + u * 73
     ly = y + u * 27
@@ -47,7 +47,7 @@ export default class Landmark {
 
     lx = x + u * 68
     ly = y + u * 34
-    this.drawLandmark(4, lx, ly, u, ctx, 2)
+    this.drawLandmark(4, lx, ly, u, ctx, 1)
 
     lx = x + u * 85
     ly = y + u * 26
@@ -84,7 +84,10 @@ export default class Landmark {
     if(isNaN(xyRatio)) xyRatio = 1
     let xRatio = 1
     let yRatio = 1
-    if(xyRatio < 1){
+    if(xyRatio === 1){
+      xRatio = 2
+      yRatio = 2
+    }else if(xyRatio < 1){
       yRatio /= xyRatio
     }else{
       xRatio *= xyRatio
