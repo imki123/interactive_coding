@@ -40,10 +40,20 @@ a:link, a:visited, a:hover{
   position: fixed;
   top: 0;
   left: 10px;
-  text-align: left;
-  width: 100%;
   color: white;
   font-size: 1.5rem;
+}
+
+.sign{
+  position: fixed;
+  bottom: 0;
+  right: 2px;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.sign img{
+  width: 1rem;
 }
 
 form{
