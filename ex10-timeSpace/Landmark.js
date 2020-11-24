@@ -80,8 +80,6 @@ export default class Landmark {
 
   drawLandmark(idx, lx, ly, u, ctx, xyRatio) { //이미지 인덱스, 랜드마크 기준점, 단위값, 컨텍스트, xy비율(x/y)
     let light = this.app.time.light / (200 * u)
-    let dx = (lx - this.app.time.x) * light //태양과 랜드마크의 거리
-    let dy = (ly - this.app.time.y) * light
 
     if(isNaN(xyRatio)) xyRatio = 1
     let xRatio = 1
@@ -92,6 +90,8 @@ export default class Landmark {
       xRatio *= xyRatio
     }
 
+    let dx = (lx +u * 5/2 * xRatio - this.app.time.x) * light //태양과 랜드마크의 거리
+    let dy = (ly +u * 5/2 * yRatio - this.app.time.y) * light
     let sx = lx //그림자 기준점
     let sy = ly + u * 5 * yRatio //그림자 기준점
     dx *= xRatio
@@ -100,8 +100,11 @@ export default class Landmark {
 
     ctx.save()
     ctx.drawImage(this.images[idx], lx, ly, u * 5 * xRatio, u * 5 * yRatio)
-    ctx.fillStyle = `hsl(${this.colors[idx]} 100% 30%)`
-    ctx.shadowColor = `hsl(${this.colors[idx]} 100% 30%)`
+    if(this.app.time.sunColor === 60){ //낮이면
+      ctx.fillStyle = ctx.shadowColor = `hsl(${this.colors[idx]} 100% 30%)`
+    }else{
+      ctx.fillStyle = ctx.shadowColor =`hsl(${this.colors[idx]} 100% 10%)`
+    }
     ctx.shadowBlur = this.app.time.light
     ctx.beginPath()
     ctx.moveTo(sx, sy) //그림자 시작. 왼쪽위
