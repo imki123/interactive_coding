@@ -24,31 +24,16 @@ class App {
     }
 
     const $buttons = document.querySelectorAll('.buttons button')
-    $buttons[0].onclick = (e)=>{
-      e.preventDefault()
-      e.stopPropagation()
-      this.rains.forEach(i => {
-        i.radius += 4
-        if(i.radius >= 500){
-          i.radius = 500
-        }
-      })
-      this.mouse.x = this.stageWidth/2
-      this.mouse.y = this.stageHeight -75
-    }
-    $buttons[1].onclick = (e)=>{
-      e.preventDefault()
-      e.stopPropagation()
-      this.rains.forEach(i => {
-        i.radius -= 4
-        if(i.radius <= 1){
-          i.radius = 1
-        }
-      })
-      this.mouse.x = this.stageWidth/2
-      this.mouse.y = this.stageHeight -75
-    }
+
+
+    $buttons[0].ontouchstart = e => e.stopPropagation()
+    $buttons[0].onclick = this.incRadius
+    $buttons[0].ontouchend = this.incRadius
+    $buttons[1].ontouchstart = e => e.stopPropagation()
+    $buttons[1].onclick = this.decRadius
+    $buttons[1].ontouchend = this.decRadius
     
+
     window.requestAnimationFrame(this.animate.bind(this))
   }
 
@@ -74,6 +59,31 @@ class App {
     //빗방울 그리기
     this.rains.forEach(i=>i.draw(this.ctx))
 
+  }
+
+  incRadius = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    this.rains.forEach(i => {
+      i.radius += 4
+      if(i.radius >= 500){
+        i.radius = 500
+      }
+    })
+    this.mouse.x = this.stageWidth/2
+    this.mouse.y = this.stageHeight -72
+  }
+  decRadius = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    this.rains.forEach(i => {
+      i.radius -= 4
+      if(i.radius <= 1){
+        i.radius = 1
+      }
+    })
+    this.mouse.x = this.stageWidth/2
+    this.mouse.y = this.stageHeight -72
   }
 } // App end
 
