@@ -34,10 +34,18 @@ export default class Mouse {
   handleMouse(e) {
     this.x = e.clientX
     this.y = e.clientY
+    if(this.x < 0) this.x = 0
+    else if(this.x > document.body.clientWidth) this.x =  document.body.clientWidth
+    if(this.y < 0) this.y = 0
+    else if(this.y > document.body.clientHeight) this.y =  document.body.clientHeight
   }
   handleTouch(e) {
     this.x = e.changedTouches[0].clientX
     this.y = e.changedTouches[0].clientY
+    if(this.x < 0) this.x = 0
+    else if(this.x > document.body.clientWidth) this.x =  document.body.clientWidth
+    if(this.y < 0) this.y = 0
+    else if(this.y > document.body.clientHeight) this.y =  document.body.clientHeight
   }
 
   handleDown() {
