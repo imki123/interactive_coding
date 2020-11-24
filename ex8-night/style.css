@@ -32,6 +32,10 @@ a:link, a:visited, a:hover{
   text-decoration: inherit;
 }
 
+.textShadow{
+  text-shadow: 0 0 5px black;
+}
+
 .title {
   position: fixed;
   top: 0;

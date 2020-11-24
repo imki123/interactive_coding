@@ -33,6 +33,10 @@ a:link, a:visited, a:hover{
   text-decoration: inherit;
 }
 
+.textShadow{
+  text-shadow: 0 0 5px black;
+}
+
 .title {
   position: fixed;
   top: 0;
@@ -41,7 +45,6 @@ a:link, a:visited, a:hover{
   width: 100%;
   color: white;
   font-size: 1.5rem;
-  text-shadow: 0 0 5px black;
 }
 
 .navigate {
@@ -50,7 +53,6 @@ a:link, a:visited, a:hover{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  text-shadow: 0 0 5px black;
 }
 .navigate span {
   padding: 5px;
