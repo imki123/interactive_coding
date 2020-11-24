@@ -67,32 +67,16 @@ a:link, a:visited, a:hover{
 
 .info {
   position: fixed;
-  bottom: 50%;
+  bottom: 40px;
+  left: 40px;
   text-align: center;
-  width: 100%;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
-
-.shapes {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.info1{
+  writing-mode: vertical-rl;
+  left: 10px; 
 }
-.shapesBack {
-  margin: auto;
-  width: 60%;
-  border-radius: 20px;
-  background: rgb(255, 255, 255, 0.7);
-}
-.shapes img {
-  width: 13%;
-  padding: 2%;
-  margin: 2%;
-}
-.shapes img:hover {
-  cursor: pointer;
-  background: gray;
-  border-radius: 10px;
+.info2{
+  bottom: 10px;
 }
