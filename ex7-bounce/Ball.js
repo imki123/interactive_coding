@@ -29,8 +29,7 @@ export default class Ball {
   draw(ctx, stageWidth, stageHeight, block) {
     this.x += this.vx
     this.y += this.vy
-    this.color += this.vc
-    if(this.color >= 255 || this.color <= 0) this.vc *= -1
+    this.color = (this.color + this.vc)%360
     this.fillStyle = `hsl(${this.color} 100% 50% / 0.7)`
 
     this.bounceWindow(stageWidth, stageHeight)
