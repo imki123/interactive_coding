@@ -1,4 +1,5 @@
 import Mouse from './Mouse.js'
+import Space from './Space.js'
 import Time from './Time.js'
 
 class App {
@@ -13,16 +14,11 @@ class App {
     window.addEventListener('resize', this.resize.bind(this), false)
     this.resize()
 
-    //마우스 인스턴스 생성
-    this.mouse = new Mouse(5, this)
-
-    //Time 인스턴스 생성
-    this.time = new Time(this.mouse, 50)
-
     window.requestAnimationFrame(this.animate.bind(this))
   }
 
   resize() {
+    console.log('resize')
     this.stageWidth = document.body.clientWidth
     this.stageHeight = document.body.clientHeight
 
@@ -31,8 +27,22 @@ class App {
     this.canvas.height = this.stageHeight * this.pixelRatio
     this.ctx.scale(this.pixelRatio, this.pixelRatio)
 
-    this.max = Math.max(document.body.clientWidth, document.body.clientHeight)
-    this.min = Math.min(document.body.clientWidth, document.body.clientHeight)
+    this.max = Math.max(this.stageWidth, this.stageHeight)
+    this.min = Math.min(this.stageWidth, this.stageHeight)
+
+    //마우스 인스턴스 생성
+    this.mouse = new Mouse(5, this) //size, app
+
+    //Time 인스턴스 생성
+    this.time = new Time(this.mouse, this.min/10) //mouse, sunSize
+
+    //Space 인스턴스 생성
+    this.spaceNum = Math.ceil(this.stageWidth/this.stageHeight) +1
+    console.log('지도개수:',this.spaceNum)
+    this.spaces = []
+    for(let i=0; i<=this.spaceNum; i++){
+      this.spaces.push(new Space(i, this.mouse, this))
+    }
   }
 
   animate(t) { //애니메이션
@@ -43,6 +53,9 @@ class App {
     
     //Time 그리기
     this.time.draw(this.ctx)
+
+    //Space 그리기
+    this.spaces.forEach(i=>i.draw(this.ctx))
 
     //마우스 그리기
     this.mouse.draw(this.ctx) 

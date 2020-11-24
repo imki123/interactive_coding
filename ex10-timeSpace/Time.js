@@ -1,8 +1,8 @@
 export default class Time{
   constructor(mouse, radius) {
     this.mouse = mouse
-    this.x = 0
-    this.y = document.body.clientWidth/10 - radius
+    this.x = radius
+    this.y = mouse.app.clientWidth/10 +radius +10
     this.r = radius 
     this.setSpeed()
 
@@ -12,28 +12,27 @@ export default class Time{
   
   draw(ctx){
     this.setSpeed()
-    let stageWidth = document.body.clientWidth
-    let stageHeight = document.body.clientHeight
+    let stageWidth = this.mouse.app.stageWidth
+    let stageHeight = this.mouse.app.stageHeight
     let pi = Math.PI
     let x = this.x
     let y = this.y
     let r = this.r
     
-    this.x = (this.x + this.speed)%(stageWidth + r * 2)
-    let xRatio = this.x/stageWidth
-    this.y = stageWidth/10 - stageWidth/10*Math.sin(pi*xRatio) +this.r
+    this.x = this.x + this.speed
+    if(this.x > stageWidth + r) this.x = -r
+    let xRatio = (this.x +r)/(stageWidth +r*2)
+    this.y = stageWidth/10 - stageWidth/10*Math.sin(pi*xRatio) +this.r + 10
 
     
 
     this.light = 50*Math.sin(pi*xRatio) //밝기
-    //console.log(this.x, document.body.clientWidth, this.light)
-    if(this.x >= document.body.clientWidth -this.speed){ //벽에 닿으면 색 변경
+    if(this.x >= stageWidth +r -this.speed){ //벽에 숨으면 색 변경
       this.sunColor = this.sunColor === 60 ? 40 : 60
     }
 
     /* 배경 그리기 */
     ctx.save() //ctx 개별 적용
-    let backLlight 
     if(this.sunColor === 60){
       ctx.fillStyle = `hsl(${this.backColor} 100% ${this.light*8/5}%)` //낮
     }else{
@@ -66,7 +65,7 @@ export default class Time{
   }
 
   setSpeed(){
-    this.speed = 1 -this.mouse.y/document.body.clientHeight
-    this.speed *= 10
+    this.speed = 1 -this.mouse.y/this.mouse.app.stageHeight
+    this.speed *= 5
   }
 }
