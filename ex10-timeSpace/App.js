@@ -1,4 +1,5 @@
 import Mouse from './Mouse.js'
+import Time from './Time.js'
 
 class App {
   constructor() {
@@ -14,6 +15,9 @@ class App {
 
     //마우스 인스턴스 생성
     this.mouse = new Mouse(5, this)
+
+    //Time 인스턴스 생성
+    this.time = new Time(this.mouse, 50)
 
     window.requestAnimationFrame(this.animate.bind(this))
   }
@@ -37,6 +41,9 @@ class App {
     //프레임 바뀔 때마다 화면 초기화
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     
+    //Time 그리기
+    this.time.draw(this.ctx)
+
     //마우스 그리기
     this.mouse.draw(this.ctx) 
   }
