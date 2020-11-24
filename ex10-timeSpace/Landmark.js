@@ -100,8 +100,8 @@ export default class Landmark {
 
     ctx.save()
     ctx.drawImage(this.images[idx], lx, ly, u * 5 * xRatio, u * 5 * yRatio)
-    ctx.fillStyle = `hsl(${this.colors[idx]} 50% ${this.app.time.light}%)`
-    ctx.shadowColor = `hsl(${this.colors[idx]} 50% ${this.app.time.light}%)`
+    ctx.fillStyle = `hsl(${this.colors[idx]} 100% 30%)`
+    ctx.shadowColor = `hsl(${this.colors[idx]} 100% 30%)`
     ctx.shadowBlur = this.app.time.light
     ctx.beginPath()
     ctx.moveTo(sx, sy) //그림자 시작. 왼쪽위
