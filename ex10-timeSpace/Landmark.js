@@ -1,3 +1,5 @@
+import { rand } from "./App.js"
+
 export default class Landmark {
   constructor(app, space) {
     this.app = app
@@ -6,7 +8,18 @@ export default class Landmark {
 
     this.images.push(this.loadImage('../images/ex10/england.png')) //0
     this.images.push(this.loadImage('../images/ex10/france.png')) //1
-    this.images.push(this.loadImage('../images/ex10/korea.png')) //2
+    this.images.push(this.loadImage('../images/ex10/china.png')) //2
+    this.images.push(this.loadImage('../images/ex10/korea.png')) //3
+    this.images.push(this.loadImage('../images/ex10/india.png')) //4
+    this.images.push(this.loadImage('../images/ex10/russia.png')) //5
+    this.images.push(this.loadImage('../images/ex10/usa.png')) //6
+    this.images.push(this.loadImage('../images/ex10/canada.png')) //7
+    this.images.push(this.loadImage('../images/ex10/egypt.png')) //8
+    this.images.push(this.loadImage('../images/ex10/africa.png')) //9
+    this.images.push(this.loadImage('../images/ex10/brazil.png')) //10
+    this.images.push(this.loadImage('../images/ex10/austrailia.png')) //11
+
+    this.colors = this.images.map(i=>rand(0, 359))
   }
   draw(ctx) {
     let x = this.space.x
@@ -24,15 +37,49 @@ export default class Landmark {
     ly = y + u * 19
     this.drawLandmark(1, lx, ly, u, ctx, 0.5)
 
-    lx = x + u * 85
-    ly = y + u * 26
+    lx = x + u * 70
+    ly = y + u * 18
+    this.drawLandmark(5, lx, ly, u, ctx, 2)
+
+    lx = x + u * 73
+    ly = y + u * 27
     this.drawLandmark(2, lx, ly, u, ctx, 2)
 
+    lx = x + u * 68
+    ly = y + u * 34
+    this.drawLandmark(4, lx, ly, u, ctx, 2)
 
+    lx = x + u * 85
+    ly = y + u * 26
+    this.drawLandmark(3, lx, ly, u, ctx, 2)
+
+    lx = x + u * 14
+    ly = y + u * 12
+    this.drawLandmark(7, lx, ly, u, ctx, 0.5)
+
+    lx = x + u * 18
+    ly = y + u * 20
+    this.drawLandmark(6, lx, ly, u, ctx, 0.5)
+
+    lx = x + u * 49
+    ly = y + u * 32
+    this.drawLandmark(8, lx, ly, u, ctx, 2)
+
+    lx = x + u * 50
+    ly = y + u * 45
+    this.drawLandmark(9, lx, ly, u, ctx, 2)
+
+    lx = x + u * 23
+    ly = y + u * 38
+    this.drawLandmark(10, lx, ly, u, ctx, 0.5)
+
+    lx = x + u * 87
+    ly = y + u * 50
+    this.drawLandmark(11, lx, ly, u, ctx, 2)
   }
 
   drawLandmark(idx, lx, ly, u, ctx, xyRatio) { //이미지 인덱스, 랜드마크 기준점, 단위값, 컨텍스트, xy비율(x/y)
-    let light = this.app.time.light / (100 * u)
+    let light = this.app.time.light / (200 * u)
     let dx = (lx - this.app.time.x) * light //태양과 랜드마크의 거리
     let dy = (ly - this.app.time.y) * light
 
@@ -47,10 +94,12 @@ export default class Landmark {
 
     let sx = lx //그림자 기준점
     let sy = ly + u * 5 * yRatio //그림자 기준점
+    dx *= xRatio
+    dy *= yRatio
     
 
     ctx.drawImage(this.images[idx], lx, ly, u * 5 * xRatio, u * 5 * yRatio)
-    ctx.fillStyle = `hsl(${0} 0% ${(50 - this.app.time.light) / 3}%)`
+    ctx.fillStyle = `hsl(${this.colors[idx]} 50% ${this.app.time.light}%)`
     ctx.beginPath()
     ctx.moveTo(sx, sy) //그림자 시작. 왼쪽위
     ctx.lineTo(sx + dx, sy + dy) //그림자 왼쪽아래 (+dx, +dy)
