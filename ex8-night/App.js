@@ -33,6 +33,8 @@ class App {
           i.radius = 500
         }
       })
+      this.mouse.x = this.stageWidth/2
+      this.mouse.y = this.stageHeight -75
     }
     $buttons[1].onclick = (e)=>{
       e.preventDefault()
@@ -43,8 +45,10 @@ class App {
           i.radius = 1
         }
       })
+      this.mouse.x = this.stageWidth/2
+      this.mouse.y = this.stageHeight -75
     }
-
+    
     window.requestAnimationFrame(this.animate.bind(this))
   }
 
