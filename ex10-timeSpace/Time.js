@@ -6,8 +6,8 @@ export default class Time{
     this.r = radius 
     this.setSpeed()
 
-    this.sunColor = 60 //낮
-    this.backColor = 240
+    this.sunColor = 60 //해. 노랑
+    this.backColor = 240 //파랑
   }
   
   draw(ctx){
@@ -15,17 +15,18 @@ export default class Time{
     let stageWidth = document.body.clientWidth
     let stageHeight = document.body.clientHeight
     let pi = Math.PI
-
-    this.x = (this.x + this.speed)%stageWidth
-    let xRatio = this.x/stageWidth
-    this.y = stageWidth/10 - stageWidth/10*Math.sin(pi*xRatio) +this.r
-
     let x = this.x
     let y = this.y
     let r = this.r
+    
+    this.x = (this.x + this.speed)%(stageWidth + r * 2)
+    let xRatio = this.x/stageWidth
+    this.y = stageWidth/10 - stageWidth/10*Math.sin(pi*xRatio) +this.r
+
+    
 
     this.light = 50*Math.sin(pi*xRatio) //밝기
-    console.log(this.x, document.body.clientWidth, this.light)
+    //console.log(this.x, document.body.clientWidth, this.light)
     if(this.x >= document.body.clientWidth -this.speed){ //벽에 닿으면 색 변경
       this.sunColor = this.sunColor === 60 ? 40 : 60
     }
@@ -34,7 +35,7 @@ export default class Time{
     ctx.save() //ctx 개별 적용
     let backLlight 
     if(this.sunColor === 60){
-      ctx.fillStyle = `hsl(${this.backColor} 100% ${this.light*7/5}%)` //낮
+      ctx.fillStyle = `hsl(${this.backColor} 100% ${this.light*8/5}%)` //낮
     }else{
       ctx.fillStyle = `hsl(${this.backColor} 100% ${this.light*1/5}%)` //밤
     }
