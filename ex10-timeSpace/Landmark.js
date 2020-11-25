@@ -93,8 +93,8 @@ export default class Landmark {
       xRatio *= xyRatio
     }
 
-    let dx = (lx +u * 5/2 * xRatio - this.app.time.x) * light //태양과 랜드마크의 거리
-    let dy = (ly +u * 5/2 * yRatio - this.app.time.y) * light
+    let dx = (lx +u * 5 * xRatio - this.app.time.x) * light //태양과 랜드마크의 거리
+    let dy = (ly +u * 5 * yRatio - this.app.time.y) * light
     let sx = lx //그림자 기준점
     let sy = ly + u * 5 * yRatio //그림자 기준점
     dx *= xRatio
@@ -110,10 +110,8 @@ export default class Landmark {
     }
     ctx.shadowBlur = this.app.time.light
     ctx.beginPath()
-    ctx.moveTo(sx, sy) //그림자 시작. 왼쪽위
-    ctx.lineTo(sx + dx, sy + dy) //그림자 왼쪽아래 (+dx, +dy)
-    ctx.bezierCurveTo(sx + dx * 2, sy + dy * 2, sx + dx * 2 + u * 5 * xRatio, sy + dy * 2, sx + u * 5 * xRatio, sy) //그림자 오른쪽아래
-    ctx.lineTo(sx + u * 5 * xRatio, sy) //오른쪽위 (+dx, +dy)
+    ctx.moveTo(sx, sy) //그림자 시작. 왼쪽
+    ctx.bezierCurveTo(sx + dx * 2, sy + dy * 2, sx + dx * 2 + u * 5 * xRatio, sy + dy * 2, sx + u * 5 * xRatio, sy) //그림자 끝. 오른쪽
     ctx.fill()
     ctx.restore()
   }
