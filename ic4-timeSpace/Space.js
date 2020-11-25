@@ -4,7 +4,7 @@ export default class Space {
   constructor(idx, mouse, app) {
     //load image
     this.image = new Image()
-    this.image.src = '../images/ex10/world.png'
+    this.image.src = '../images/ic4/world.png'
 
     this.idx = idx
     this.mouse = mouse

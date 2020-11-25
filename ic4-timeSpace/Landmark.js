@@ -6,18 +6,18 @@ export default class Landmark {
     this.space = space
     this.images = []
 
-    this.images.push(this.loadImage('../images/ex10/england.png')) //0
-    this.images.push(this.loadImage('../images/ex10/france.png')) //1
-    this.images.push(this.loadImage('../images/ex10/china.png')) //2
-    this.images.push(this.loadImage('../images/ex10/korea.png')) //3
-    this.images.push(this.loadImage('../images/ex10/india.png')) //4
-    this.images.push(this.loadImage('../images/ex10/russia.png')) //5
-    this.images.push(this.loadImage('../images/ex10/usa.png')) //6
-    this.images.push(this.loadImage('../images/ex10/canada.png')) //7
-    this.images.push(this.loadImage('../images/ex10/egypt.png')) //8
-    this.images.push(this.loadImage('../images/ex10/africa.png')) //9
-    this.images.push(this.loadImage('../images/ex10/brazil.png')) //10
-    this.images.push(this.loadImage('../images/ex10/austrailia.png')) //11
+    this.images.push(this.loadImage('../images/ic4/england.png')) //0
+    this.images.push(this.loadImage('../images/ic4/france.png')) //1
+    this.images.push(this.loadImage('../images/ic4/china.png')) //2
+    this.images.push(this.loadImage('../images/ic4/korea.png')) //3
+    this.images.push(this.loadImage('../images/ic4/india.png')) //4
+    this.images.push(this.loadImage('../images/ic4/russia.png')) //5
+    this.images.push(this.loadImage('../images/ic4/usa.png')) //6
+    this.images.push(this.loadImage('../images/ic4/canada.png')) //7
+    this.images.push(this.loadImage('../images/ic4/egypt.png')) //8
+    this.images.push(this.loadImage('../images/ic4/africa.png')) //9
+    this.images.push(this.loadImage('../images/ic4/brazil.png')) //10
+    this.images.push(this.loadImage('../images/ic4/austrailia.png')) //11
 
     this.colors = this.images.map(i=>rand(0, 359))
   }
