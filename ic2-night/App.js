@@ -1,5 +1,5 @@
 import Mouse from './Mouse.js'
-import Rain from './Rain.js'
+import Snow from './Snow.js'
 
 class App {
   constructor() {
@@ -17,10 +17,10 @@ class App {
     this.mouse = new Mouse(60)
 
     //빗방울 인스턴스 생성
-    this.rains = []
-    this.rainsNum = 16 //빗방울 개수
-    for(let i=0; i<this.rainsNum; i++){
-      this.rains[i] = new Rain(60, 500*i, this.mouse) //radius, delay, mouse
+    this.snows = []
+    this.snowsNum = 16 //빗방울 개수
+    for(let i=0; i<this.snowsNum; i++){
+      this.snows[i] = new Snow(30, 500*i, this.mouse) //radius, delay, mouse
     }
 
     const $buttons = document.querySelectorAll('.buttons button')
@@ -57,14 +57,14 @@ class App {
     this.mouse.draw(this.ctx) 
 
     //빗방울 그리기
-    this.rains.forEach(i=>i.draw(this.ctx))
+    this.snows.forEach(i=>i.draw(this.ctx))
 
   }
 
   incRadius = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    this.rains.forEach(i => {
+    this.snows.forEach(i => {
       i.radius += 4
       if(i.radius >= 500){
         i.radius = 500
@@ -76,7 +76,7 @@ class App {
   decRadius = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    this.rains.forEach(i => {
+    this.snows.forEach(i => {
       i.radius -= 4
       if(i.radius <= 1){
         i.radius = 1
