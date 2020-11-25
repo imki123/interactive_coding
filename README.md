@@ -1,7 +1,7 @@
-# example_code
+# Interactive Coding
 
 ### 인터렉티브 코딩
-- Interactive coding : https://imki123.github.io/example_code
+- URL : https://imki123.github.io/interactive_coding/
 - 참고영상 : https://www.youtube.com/watch?v=sLCiI6d5vTM&t=183s&ab_channel=InteractiveDeveloperInteractiveDeveloper
 
 - Bounce
