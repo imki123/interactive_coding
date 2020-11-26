@@ -2,10 +2,10 @@ export default class Sauce {
   constructor(app) {
     this.app = app
     this.sauce = app.sauce
-    if (this.sauce === 'ketchup') this.color = 'rgba(255,0,0,0.3)'
-    if (this.sauce === 'soysauce') this.color = 'rgba(0,0,0,0.3)'
-    if (this.sauce === 'redpepper') this.color = 'rgba(255,100,0,0.3)'
-    if (this.sauce === 'wasabi') this.color = 'rgba(0,255,0,0.3)'
+    if (this.sauce === 'ketchup') this.color = 'rgba(255,0,0)'
+    if (this.sauce === 'soysauce') this.color = 'rgba(30,30,30)'
+    if (this.sauce === 'redpepper') this.color = 'rgba(255,100,0)'
+    if (this.sauce === 'wasabi') this.color = 'rgba(0,255,0)'
 
     this.speed = 0.2
     this.r = app.egg.radius / 3

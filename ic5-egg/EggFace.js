@@ -7,7 +7,6 @@ export default class EggFace {
     const pi = Math.PI
     // 얼굴 그리기
     if (this.app.egg.feel === 'none') {
-      console.log(this.app.egg.feel)
       //보통. 눈하고 입만 움직임
       this.app.egg.none(this.app.mouse)
       ctx.save()
