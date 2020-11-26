@@ -35,7 +35,7 @@ class App {
     this.max = Math.max(document.body.clientWidth, document.body.clientHeight)
     this.min = Math.min(document.body.clientWidth, document.body.clientHeight)
 
-    /* //화면 크기 이용해서 모양 박스 크기 조절하기
+    //화면 크기 이용해서 모양 박스 크기 조절하기
     const minHalf = this.min*0.6
     const $imgs = document.querySelectorAll('.shapes img')
     $imgs[0].parentElement.style.width = minHalf +'px'
@@ -43,7 +43,7 @@ class App {
       i.style.width = minHalf*0.11 +'px'
       i.style.margin = minHalf*0.01 +'px'
       i.style.padding = minHalf*0.02 +'px'
-    } */
+    }
   }
 
   animate(t) { //애니메이션
