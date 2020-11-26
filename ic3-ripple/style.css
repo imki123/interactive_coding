@@ -8,7 +8,7 @@
 }
 
 .shapes {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
@@ -21,8 +21,8 @@
 }
 .shapes img {
   width: 13%;
+  margin: 1%;
   padding: 2%;
-  margin: 2%;
 }
 .shapes img:hover {
   cursor: pointer;
