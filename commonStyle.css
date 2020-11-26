@@ -59,7 +59,7 @@ a:hover {
   width: 1rem;
 }
 
-.navigate {
+.navigation {
   position: absolute;
   top: 45%;
   display: flex;
@@ -67,12 +67,12 @@ a:hover {
   width: 100%;
   font-size: 0.8rem;
 }
-.navigate span {
+.navigation span {
   padding: 5px;
   cursor: pointer;
   color: white;
 }
-.navigate span:hover {
+.navigation span:hover {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   color: blue;
