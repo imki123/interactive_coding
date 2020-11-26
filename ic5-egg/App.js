@@ -1,3 +1,4 @@
+import Egg from './Egg.js'
 import Mouse from './Mouse.js'
 
 class App {
@@ -15,10 +16,11 @@ class App {
     window.requestAnimationFrame(this.animate.bind(this))
 
     //마우스 인스턴스 생성
-    this.mouse = new Mouse(3, this) //size, app
+    this.mouse = new Mouse(3, this) //radius, app
   }
 
   resize() {
+    console.log('resize')
     this.stageWidth = document.body.clientWidth
     this.stageHeight = document.body.clientHeight
 
@@ -29,6 +31,9 @@ class App {
 
     this.max = Math.max(this.stageWidth, this.stageHeight)
     this.min = Math.min(this.stageWidth, this.stageHeight)
+
+    //에그 인스턴스 생성
+    this.egg = new Egg(this.stageHeight/10, this) //radius, app
   }
 
   animate(t) { //애니메이션
@@ -37,6 +42,8 @@ class App {
     //프레임 바뀔 때마다 화면 초기화
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     
+    //에그 그리기
+    this.egg.draw(this.ctx)
 
     //마우스 그리기
     this.mouse.draw(this.ctx) 

@@ -4,9 +4,9 @@ export default class Mouse {
   constructor(radius, app) {
     this.radius = radius
     this.app = app
-    this.x = app.stageWidth/2
+    this.x = app.stageWidth / 2
     //this.y = app.stageHeight/2
-    this.y = app.stageHeight - 60
+    this.y = app.stageHeight / 5
 
     document.body.addEventListener('mousedown', (e) => {
       this.handleMouse(e)
@@ -36,6 +36,7 @@ export default class Mouse {
     if(this.y < 0) this.y = 0
     else if(this.y > document.body.clientHeight) this.y =  document.body.clientHeight
 
+    //마우스 움직이면 info 숨기기
     const $info = document.querySelector('.info')
     if($info) $info.style.display = 'none'
   }
@@ -47,6 +48,7 @@ export default class Mouse {
     if(this.y < 0) this.y = 0
     else if(this.y > document.body.clientHeight) this.y =  document.body.clientHeight
 
+    //터치하면 info 숨기기
     const $info = document.querySelector('.info')
     if($info) $info.style.display = 'none'
   }
@@ -66,10 +68,11 @@ export default class Mouse {
   }
 
   draw(ctx) {
-    ctx.strokeStyle = `rgba(255,255,255,0.9)`
+    //마우스 포인터 그리기
+    /* ctx.strokeStyle = `rgba(255,255,255,0.9)`
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.lineWidth = 2
-    ctx.stroke()
+    ctx.stroke() */
   }
 }
