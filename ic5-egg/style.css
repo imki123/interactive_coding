@@ -2,7 +2,25 @@ body{
   background-color: rgb(196, 196, 196);
 }
 
-.info{
-  bottom: 20px;
-  
+.sauces {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.saucesBack {
+  margin: auto;
+  width: 60%;
+  border-radius: 20px;
+  background: rgb(255, 255, 255, 0.7);
+}
+.sauces img {
+  width: 13%;
+  margin: 1%;
+  padding: 2%;
+}
+.sauces img:hover {
+  cursor: pointer;
+  background: gray;
+  border-radius: 10px;
 }

@@ -1,7 +1,6 @@
 //ic번호로 b
 const ics = ['ic1-bounce','ic2-night','ic3-ripple','ic4-timeSpace','ic5-egg']
 document.addEventListener('DOMContentLoaded', function(){
-  console.log('loaded')
   //ic번호에 따라서 prev, next 버튼 활성화
   const $ic = document.querySelector('.ic')
   if($ic && !isNaN($ic.value*1)){

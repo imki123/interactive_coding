@@ -1,4 +1,5 @@
 import { rand } from './App.js'
+import Sauce from './Sauce.js'
 
 export default class Mouse {
   constructor(radius, app) {
@@ -6,7 +7,7 @@ export default class Mouse {
     this.app = app
     this.x = app.stageWidth / 2
     //this.y = app.stageHeight/2
-    this.y = app.stageHeight / 5
+    this.y = app.stageHeight *3 / 10
 
     document.body.addEventListener('mousedown', (e) => {
       this.handleMouse(e)
@@ -39,6 +40,8 @@ export default class Mouse {
     //마우스 움직이면 info 숨기기
     const $info = document.querySelector('.info')
     if($info) $info.style.display = 'none'
+
+    this.app.print.push(new Sauce(this.app)) //소스자국 생성하기
   }
   handleTouch(e) {
     this.x = e.changedTouches[0].clientX
@@ -51,6 +54,8 @@ export default class Mouse {
     //터치하면 info 숨기기
     const $info = document.querySelector('.info')
     if($info) $info.style.display = 'none'
+
+    this.app.print.push(new Sauce(this.app)) //소스자국 생성하기
   }
 
   handleDown() {
