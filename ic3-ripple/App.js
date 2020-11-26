@@ -63,7 +63,7 @@ class App {
 window.onload = () => {
   const app = new App()
 
-  //img 클릭시 이벤트 무시하기
+  //img 클릭시 이벤트 무시하기. 도형 선택하기.
   const $imgs = document.querySelectorAll('img')
   for(let i of $imgs){
     i.onmousedown = e => e.stopPropagation()
