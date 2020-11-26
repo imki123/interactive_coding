@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const icNum = $ic.value*1
     const prev = icNum-2 < 0 ? ics.length-1 : icNum-2
     const next = icNum >= ics.length ? 0 : icNum
-    console.log(prev, icNum, next)
     const $navigation = document.querySelectorAll('.navigation a')
     if($navigation[0]) $navigation[0].href = `../${ics[prev]}/`
     if($navigation[1]) $navigation[1].href = `../${ics[next]}/`
+  }else{
+    console.error('No ic! Check it!')
   }
 })

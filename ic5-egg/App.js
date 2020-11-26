@@ -15,7 +15,7 @@ class App {
     window.requestAnimationFrame(this.animate.bind(this))
 
     //마우스 인스턴스 생성
-    this.mouse = new Mouse(5, this) //size, app
+    this.mouse = new Mouse(3, this) //size, app
   }
 
   resize() {
