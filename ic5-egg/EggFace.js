@@ -5,6 +5,13 @@ export default class EggFace {
 
   draw(ctx) {
     const pi = Math.PI
+    let x = this.app.egg.x
+    let y = this.app.egg.y
+    let r = this.app.egg.radius
+    let eyeX = this.app.egg.eyeX/8
+    let eyeY = this.app.egg.eyeY/8
+    let dr = r/10
+    console.log(eyeX, dr)
     // 얼굴 그리기
     if (this.app.egg.feel === 'none') {
       //보통. 눈하고 입만 움직임
@@ -14,19 +21,19 @@ export default class EggFace {
       ctx.fillStyle = 'black'
       ctx.lineWidth = 2
 
-      // 왼쪽눈
+      // 왼쪽눈. x -r +ex
       ctx.beginPath()
-      ctx.arc(this.app.egg.x - this.app.egg.radius / 10 - this.app.egg.eyeX / 20, this.app.egg.y - this.app.egg.radius / 10 - this.app.egg.eyeY / 20, this.app.egg.radius / 20, 0, pi * 2)
+      ctx.arc(x -eyeX -r*4/10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
       ctx.fill()
 
-      //오른쪽눈
+      //오른쪽눈 x +r +ex
       ctx.beginPath()
-      ctx.arc(this.app.egg.x + (this.app.egg.radius * 7) / 10 - this.app.egg.eyeX / 20, this.app.egg.y - this.app.egg.radius / 10 - this.app.egg.eyeY / 20, this.app.egg.radius / 20, 0, pi * 2)
+      ctx.arc(x -eyeX +r*4/10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
       ctx.fill()
 
       //입
       ctx.beginPath()
-      ctx.arc(this.app.egg.x + (this.app.egg.radius * 3) / 10 - this.app.egg.eyeX / 20, this.app.egg.y + this.app.egg.radius / 10 - this.app.egg.eyeY / 20, this.app.egg.radius / 4, pi / 6, (pi * 5) / 6)
+      ctx.arc(x -eyeX, y + r / 15 - eyeY, r / 4, pi / 6, (pi * 5) / 6)
       ctx.stroke()
       ctx.restore()
     } else if (this.app.egg.feel === 'like') {
@@ -39,21 +46,21 @@ export default class EggFace {
 
       // 왼쪽눈
       ctx.beginPath()
-      ctx.moveTo(this.app.egg.x - this.app.egg.radius / 3 - this.app.egg.radius / 7, this.app.egg.y - this.app.egg.radius / 5 - this.app.egg.radius / 10)
-      ctx.lineTo(this.app.egg.x - this.app.egg.radius / 3, this.app.egg.y - this.app.egg.radius / 5)
-      ctx.lineTo(this.app.egg.x - this.app.egg.radius / 3 - this.app.egg.radius / 7, this.app.egg.y - this.app.egg.radius / 5 + this.app.egg.radius / 10)
+      ctx.moveTo(x - r / 3 - r / 7, y - r / 5 - r / 10)
+      ctx.lineTo(x - r / 3, y - r / 5)
+      ctx.lineTo(x - r / 3 - r / 7, y - r / 5 + r / 10)
       ctx.stroke()
 
       //오른쪽눈
       ctx.beginPath()
-      ctx.moveTo(this.app.egg.x + this.app.egg.radius / 3 + this.app.egg.radius / 7, this.app.egg.y - this.app.egg.radius / 5 - this.app.egg.radius / 10)
-      ctx.lineTo(this.app.egg.x + this.app.egg.radius / 3, this.app.egg.y - this.app.egg.radius / 5)
-      ctx.lineTo(this.app.egg.x + this.app.egg.radius / 3 + this.app.egg.radius / 7, this.app.egg.y - this.app.egg.radius / 5 + this.app.egg.radius / 10)
+      ctx.moveTo(x + r / 3 + r / 7, y - r / 5 - r / 10)
+      ctx.lineTo(x + r / 3, y - r / 5)
+      ctx.lineTo(x + r / 3 + r / 7, y - r / 5 + r / 10)
       ctx.stroke()
 
       //입
       ctx.beginPath()
-      ctx.arc(this.app.egg.x, this.app.egg.y, this.app.egg.radius / 4, pi / 6, (pi * 5) / 6)
+      ctx.arc(x, y, r / 4, pi / 6, (pi * 5) / 6)
       ctx.stroke()
       ctx.restore()
     } else if (this.app.egg.feel === 'dislike') {
@@ -66,27 +73,27 @@ export default class EggFace {
 
       // 왼쪽눈
       ctx.beginPath()
-      ctx.arc(this.app.egg.x - this.app.egg.radius / 3, this.app.egg.y - this.app.egg.radius / 5, this.app.egg.radius / 20, 0, pi * 2)
+      ctx.arc(x - r / 3, y - r / 5, r / 20, 0, pi * 2)
       ctx.fill()
       //왼쪽 눈썹
       ctx.beginPath()
-      ctx.moveTo(this.app.egg.x - this.app.egg.radius / 3 + (this.app.egg.radius * 1) / 10, this.app.egg.y - this.app.egg.radius / 4 - (this.app.egg.radius * 1) / 10)
-      ctx.lineTo(this.app.egg.x - this.app.egg.radius / 3 - this.app.egg.radius / 5, this.app.egg.y - this.app.egg.radius / 4 - this.app.egg.radius / 5)
+      ctx.moveTo(x - r / 3 + (r * 1) / 10, y - r / 4 - (r * 1) / 10)
+      ctx.lineTo(x - r / 3 - r / 5, y - r / 4 - r / 5)
       ctx.stroke()
 
       //오른쪽눈
       ctx.beginPath()
-      ctx.arc(this.app.egg.x + this.app.egg.radius / 3, this.app.egg.y - this.app.egg.radius / 5, this.app.egg.radius / 20, 0, pi * 2)
+      ctx.arc(x + r / 3, y - r / 5, r / 20, 0, pi * 2)
       ctx.fill()
       //왼쪽 눈썹
       ctx.beginPath()
-      ctx.moveTo(this.app.egg.x + this.app.egg.radius / 3 - (this.app.egg.radius * 1) / 10, this.app.egg.y - this.app.egg.radius / 4 - (this.app.egg.radius * 1) / 10)
-      ctx.lineTo(this.app.egg.x + this.app.egg.radius / 3 + this.app.egg.radius / 5, this.app.egg.y - this.app.egg.radius / 4 - this.app.egg.radius / 5)
+      ctx.moveTo(x + r / 3 - (r * 1) / 10, y - r / 4 - (r * 1) / 10)
+      ctx.lineTo(x + r / 3 + r / 5, y - r / 4 - r / 5)
       ctx.stroke()
 
       //입
       ctx.beginPath()
-      ctx.arc(this.app.egg.x, this.app.egg.y + this.app.egg.radius / 3, this.app.egg.radius / 3, (pi * 7) / 6, (pi * 11) / 6)
+      ctx.arc(x, y + r / 3, r / 3, (pi * 7) / 6, (pi * 11) / 6)
       ctx.stroke()
       ctx.restore()
     }

@@ -52,10 +52,10 @@ export default class Egg {
     if(mouse.y === this.app.egg.initY) mouse.y = this.app.egg.initY + 0.0000001 //atan 에러 방지
     let angle = Math.atan(Math.abs(mouse.x - this.app.egg.initX) / Math.abs(mouse.y - this.app.egg.initY))
 
-    if (mouse.x > this.app.egg.initX) this.app.egg.eyeX = this.app.egg.initX - Math.sin(angle) * this.app.egg.radius * 2
-    else this.app.egg.eyeX = this.app.egg.initX + Math.sin(angle) * this.app.egg.radius * 2
-    if (mouse.y > this.app.egg.initY) this.app.egg.eyeY = this.app.egg.initY - Math.cos(angle) * this.app.egg.radius * 2
-    else this.app.egg.eyeY = this.app.egg.initY + Math.cos(angle) * this.app.egg.radius * 2
+    if (mouse.x > this.app.egg.initX) this.app.egg.eyeX = - Math.sin(angle) * this.app.egg.radius
+    else this.app.egg.eyeX = Math.sin(angle) * this.app.egg.radius
+    if (mouse.y > this.app.egg.initY) this.app.egg.eyeY = - Math.cos(angle) * this.app.egg.radius
+    else this.app.egg.eyeY = Math.cos(angle) * this.app.egg.radius
   }
 
   like(mouse) {
