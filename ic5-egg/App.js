@@ -88,7 +88,8 @@ window.onload = () => {
     i.onclick = e => {
       e.stopPropagation()
       app.sauce = i.alt
-      app.egg.feel = i.name //none, like, dislike
+      app.egg.feel = i.dataset.feel //none, like, dislike
+      app.mouse.idx = i.dataset.idx //0 ~ 4
       console.log(app.sauce, app.egg.feel)
     }
   }

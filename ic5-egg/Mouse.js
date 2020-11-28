@@ -7,7 +7,7 @@ export default class Mouse {
     this.app = app
     this.x = app.stageWidth / 2
     //this.y = app.stageHeight/2
-    this.y = app.stageHeight *3 / 10
+    this.y = app.stageHeight *5 / 10 
 
     document.body.addEventListener('mousedown', (e) => {
       this.handleMouse(e)
@@ -27,6 +27,15 @@ export default class Mouse {
       this.handleTouch(e)
       this.handleUp()
     })
+
+    this.idx = 0
+    this.images = []
+    this.images.push(this.loadImage('../images/ic5/none.png'))
+    this.images.push(this.loadImage('../images/ic5/ketchup.png'))
+    this.images.push(this.loadImage('../images/ic5/soysauce.png'))
+    this.images.push(this.loadImage('../images/ic5/redpepper.png'))
+    this.images.push(this.loadImage('../images/ic5/wasabi.png'))
+
   }
 
   handleMouse(e) {
@@ -74,10 +83,21 @@ export default class Mouse {
 
   draw(ctx) {
     //마우스 포인터 그리기
+
     /* ctx.strokeStyle = `rgba(255,255,255,0.9)`
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.lineWidth = 2
     ctx.stroke() */
+
+    ctx.save()
+    ctx.drawImage(this.images[this.idx], this.x, this.y, this.app.egg.radius*4/5, this.app.egg.radius*4/5 )
+    ctx.restore()
+  }
+
+  loadImage(src){
+    let image = new Image()
+    image.src = src
+    return image
   }
 }

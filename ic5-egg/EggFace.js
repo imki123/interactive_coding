@@ -8,10 +8,9 @@ export default class EggFace {
     let x = this.app.egg.x
     let y = this.app.egg.y
     let r = this.app.egg.radius
-    let eyeX = this.app.egg.eyeX/8
-    let eyeY = this.app.egg.eyeY/8
-    let dr = r/10
-    console.log(eyeX, dr)
+    let eyeX = this.app.egg.eyeX / 8
+    let eyeY = this.app.egg.eyeY / 8
+    let dr = r / 10
     // 얼굴 그리기
     if (this.app.egg.feel === 'none') {
       //보통. 눈하고 입만 움직임
@@ -23,19 +22,53 @@ export default class EggFace {
 
       // 왼쪽눈. x -r +ex
       ctx.beginPath()
-      ctx.arc(x -eyeX -r*4/10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
+      ctx.arc(x - eyeX - (r * 4) / 10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
       ctx.fill()
 
       //오른쪽눈 x +r +ex
       ctx.beginPath()
-      ctx.arc(x -eyeX +r*4/10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
+      ctx.arc(x - eyeX + (r * 4) / 10, y - r / 6 - eyeY, r / 20, 0, pi * 2)
       ctx.fill()
 
       //입
       ctx.beginPath()
-      ctx.arc(x -eyeX, y + r / 15 - eyeY, r / 4, pi / 6, (pi * 5) / 6)
+      ctx.arc(x - eyeX, y + r / 15 - eyeY, r / 4, pi / 6, (pi * 5) / 6)
       ctx.stroke()
       ctx.restore()
+
+      if (this.app.egg.distance(x, y, this.app.mouse.x, this.app.mouse.y) <= r) {
+        //마우스가 노른자에 닿으면
+        
+        let basisX = x - eyeX - (r * 4) / 10 - r *18/ 100
+        let basisY = y - r / 6 - eyeY + r / 5
+        ctx.save()
+        ctx.strokeStyle = 'pink'
+        ctx.lineWidth = 3
+        //왼쪽 발그레 그리기
+        ctx.beginPath()
+        ctx.moveTo(basisX, basisY)
+        ctx.lineTo(basisX + r / 20, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 2, basisY)
+        ctx.lineTo(basisX + (r / 20) * 3, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 4, basisY)
+        ctx.lineTo(basisX + (r / 20) * 5, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 6, basisY)
+        ctx.lineTo(basisX + (r / 20) * 7, basisY + r / 20)
+
+        //오른쪽 발그레 그리기
+        basisX = x - eyeX + (r * 4) / 10 - r *18/ 100
+        ctx.moveTo(basisX, basisY)
+        ctx.lineTo(basisX + r / 20, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 2, basisY)
+        ctx.lineTo(basisX + (r / 20) * 3, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 4, basisY)
+        ctx.lineTo(basisX + (r / 20) * 5, basisY + r / 20)
+        ctx.lineTo(basisX + (r / 20) * 6, basisY)
+        ctx.lineTo(basisX + (r / 20) * 7, basisY + r / 20)
+
+        ctx.stroke()
+        ctx.restore()
+      }
     } else if (this.app.egg.feel === 'like') {
       //좋아함
       this.app.egg.like(this.app.mouse)
